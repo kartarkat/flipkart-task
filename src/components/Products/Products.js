@@ -20,17 +20,25 @@ function Products({ data = [] }) {
 
 
     const handleFilter = (filters) => {
-        const filteredByPrice = products.filter(
-          (product) => (filters.minPrice === '' || product.price >= filters.minPrice) && (filters.maxPrice === '' || product.price <= filters.maxPrice)
-        );
-        const filteredByBrand = filteredByPrice.filter(
-          (product) => filters.brand === '' || product.brand.toLowerCase().includes(filters.brand.toLowerCase())
-        );
-        const filteredByColor = filteredByBrand.filter(
-          (product) => filters.colors.length === 0 || filters.colors.includes(product.color)
-        );
-        setFilteredProducts(filteredByColor);
+        const filteredProducts = products.filter((product) => {
+          // filter by price
+          if ((filters.minPrice !== '' && product.price < filters.minPrice) || (filters.maxPrice !== '' && product.price > filters.maxPrice)) {
+            return false;
+          }
+          // filter by brand
+          if (filters.brand !== '' && !product.brand.toLowerCase().includes(filters.brand.toLowerCase())) {
+            return false;
+          }
+          // filter by color
+          if (filters.colors.length > 0 && !product.colors.some((color) => filters.colors.includes(color))) {
+            return false;
+          }
+          return true;
+        });
+      
+        setFilteredProducts(filteredProducts);
       };
+      
 
     const renderProduct = (product) => {
         const { id, title, originalPrice, price, discountPercentage, rating, thumbnail, colors, brand } = product;
@@ -53,7 +61,6 @@ function Products({ data = [] }) {
     };
 
    
-
 
     return (
         <div className='productsPage'>

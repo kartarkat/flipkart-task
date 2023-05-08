@@ -1,0 +1,34 @@
+.filterContainer{
+    padding: 10px;
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .priceContainer {
+    margin-bottom: 10px;
+  }
+  
+  .brandContainer {
+    margin-bottom: 10px;
+  }
+  
+  .colorContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+  .colorContainer > div {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .colorContainer > div input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Filters.css'
 
 function Filters({ data, handleFilter }) {
   const [minPrice, setMinPrice] = useState('');
@@ -13,7 +14,6 @@ function Filters({ data, handleFilter }) {
   };
 
   const handleMinPriceChange = (e) => {
-    // if(e.target.value)
     setMinPrice(parseInt(e.target.value));
     handleFilter({ minPrice: parseInt(e.target.value), maxPrice, brand, colors });
   };
@@ -41,7 +41,7 @@ function Filters({ data, handleFilter }) {
   };
 
   return (
-    <div>
+    <div className='filterContainer'>
       <div className="title">Filters</div>
       <div className="priceContainer">
         <select value={minPrice} onChange={handleMinPriceChange}>
