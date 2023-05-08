@@ -41,7 +41,7 @@ function Products({ data = [] }) {
       
 
     const renderProduct = (product) => {
-        const { id, title, originalPrice, price, discountPercentage, rating, thumbnail, colors, brand } = product;
+        const { id, title, originalPrice, price, discountPercentage, rating, thumbnail } = product;
         return (
             <div key={id} className="productContainer">
                 <div className="productImageContainer">
